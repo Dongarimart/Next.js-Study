@@ -1,8 +1,12 @@
 # Prac 01. NextJS로 페이지 라우팅하기
 
+이번 주차는 본인 Repository를 새로 생성해서 진행합니다.
+
 ## Mission - 아래 화면 출력하기
 - `http://localhost:3000/본인이름`에 하고싶은 말 띄우기<br><br>
 ![page view](images/page.png)
+
+- 완성한 App은 본인 GitHub Repository(이름은 마음대로!)에 Public으로 생성 후 discord에 Repository URL 올리기
 
 ## Hint
 
