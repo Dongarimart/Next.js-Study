@@ -10,9 +10,9 @@
 
 ### 2. VS Code 설치 (https://code.visualstudio.com/) - Mac 유저는 편한걸로!
 
-### 3. `npx create-next-app`
+### 3. next app을 생성하는 명령어: `npx create-next-app`
 ![script](images/script.png)
 
-### 4. `app/폴더명/page.tsx` 파일에 접속하려면 `http://localhost:3000/폴더명`에 접속하면 된다!
+### 4. `app/폴더명/page.tsx` 파일은 `http://localhost:3000/폴더명`으로 라우팅 된다!
 
-### 5. `npm run dev`
+### 5. next app 서버를 실행하는 명령어: `npm run dev`
