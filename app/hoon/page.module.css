@@ -1,0 +1,16 @@
+.container {
+  width: 80%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+.progressBar {
+  border: solid;
+  width: 100%;
+  padding: 1px;
+}

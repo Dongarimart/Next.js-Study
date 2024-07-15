@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -37,6 +38,56 @@ export default function Home() {
           height={37}
           priority
         />
+      </div>
+
+      <div className={styles.grid}>
+        <Link
+          href="/hoon"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Hoon <span>-&gt;</span>
+          </h2>
+          <p>이번 주차 스터디 끝나면 완성본 공개할고야 😛</p>
+        </Link>
+
+        <Link
+          href="/seungjae"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Seungjae <span>-&gt;</span>
+          </h2>
+          <p>Seungjae 숙제하는 곳</p>
+        </Link>
+
+        <Link
+          href="/tae"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            tae <span>-&gt;</span>
+          </h2>
+          <p>tae 숙제하는 곳</p>
+        </Link>
+
+        <Link
+          href="/jhyun"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            jhyun <span>-&gt;</span>
+          </h2>
+          <p>jhyun 숙제하는 곳</p>
+        </Link>
       </div>
 
       <div className={styles.grid}>
