@@ -44,7 +44,6 @@ export default function Home() {
         <Link
           href="/hoon"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
@@ -56,7 +55,6 @@ export default function Home() {
         <Link
           href="/seungjae"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
@@ -68,7 +66,6 @@ export default function Home() {
         <Link
           href="/tae"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
@@ -80,7 +77,6 @@ export default function Home() {
         <Link
           href="/jhyun"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
