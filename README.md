@@ -13,10 +13,11 @@
 - CSS 똑같이 할 필요는 없지만 비슷하게 구현하기! `module.css`활용
 
 ## Hint
-### 1. `useState`
-### 2. `module.css`
-### 3. `'use client'`
-### 4. `onClick`
+### 0. `package.json`파일에 현재 app이 필요한 라이브러리가 전부 기록되어있으므로 `npm i` 또는 `npm install`을 입력하여 라이브러리를 설치해주면 됩니다.
+### 1. `useState`: React의 변수 상태 관리 도구
+### 2. `module.css`: 각 react 파일 element의 classname이 서로 겹쳐도 css가 겹치지 않도록 도와주는 CSS 도구
+### 3. `'use client'`: Next.js의 클라이언트 렌더링 선언.
+### 4. `onClick`: element가 클릭되었을 때 실행될 함수
 ### 5. react 문법 활용
 ``` ts
 <div className={styles.progressBar}>
