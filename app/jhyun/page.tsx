@@ -2,11 +2,12 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 
+const MAX_PROGRESS = 11;
 const JhyunPage = () => {
   const [progress, setProgress] = useState(1);
 
   const handleButtonClick = () => {
-    setProgress(progress + 1);
+    setProgress(prevProgress => Math.min(prevProgress +1, MAX_PROGRESS))
     console.log('Progress:', progress + 1); 
   };
 
