@@ -3,7 +3,7 @@
 이번 주차는 현재 Branch를 기점으로 본인의 branch를 생성하여 진행합니다.
 
 ## Mission - 아래 화면 출력하기(사진 클릭 시 동작 영상 나옴)
-[![alt text](image.png)](/images/Study-01.mp4)
+[![alt text](images/image.png)](/images/Study-01.mp4)
 1. 문장이 담긴 버튼을 누르면 아래 게이지가 이모티콘으로 채워짐
 2. reset 버튼: 게이지 초기화
 3. home 버튼: 메인페이지 `...:3000/`로 돌아가기
