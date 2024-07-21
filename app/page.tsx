@@ -49,7 +49,7 @@ export default function Home() {
           <h2>
             Hoon <span>-&gt;</span>
           </h2>
-          <p>이번 주차 스터디 끝나면 완성본 공개할고야 😛</p>
+          <p>완성본 공개</p>
         </Link>
 
         <Link
