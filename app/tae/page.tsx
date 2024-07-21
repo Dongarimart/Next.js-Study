@@ -7,9 +7,12 @@ import styles from "./page.module.css";
 export default function Tae() {
 
   const [pizzaCount, setPizzaCount] = useState(1);
+  const maxPizza = 15;
 
   const handleButtonClick = () => {
-    setPizzaCount(pizzaCount+1);
+    if (pizzaCount < maxPizza){
+      setPizzaCount(pizzaCount+1);
+    }
   };
 
   return (
