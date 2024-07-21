@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { useState } from "react";
 
-export default function Complete() {
+export default function Hoon() {
   const [progress, setProgress] = useState<number>(1);
 
   const progressUp = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
