@@ -7,10 +7,30 @@
   align-items: center;
   margin: 0 auto;
   gap: 32px;
+  background-color: whitesmoke;
 }
 
 .progressBar {
   border: solid;
-  width: 100%;
-  padding: 1px;
+  width: 30%;
+  padding: 3px;
+  color: black;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.button{
+  background-color: tomato;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.buttonContainer{
+  display: flex;
+  gap: 16px;
 }
