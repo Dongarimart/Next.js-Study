@@ -8,7 +8,10 @@ export default function Seungjae() {
   const [crap, SetCrap] = useState(1);
   
   const AddCrap = () => {
-    SetCrap(crap+1);
+    if(crap < 16){
+      SetCrap(crap+1)
+    }
+    
   }
 
   return (
