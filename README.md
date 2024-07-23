@@ -76,3 +76,4 @@
 JSON.stringify(object) // JS 또는 TS의 Object 타입을 JSON string 형식으로 변환한다.
 JSON.parse(string) // JSON string 타입을 JS 또는 TS의 Object 타입으로 변환한다.
 ```
+### 5. 비동기 처리에는 `async`와 `await` 키워드가 사용된다! [async와 await 설명서](https://ko.javascript.info/async-await)
