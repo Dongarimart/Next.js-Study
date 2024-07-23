@@ -5,11 +5,18 @@ import styles from './page.module.css';
 import Link from 'next/link';
 import ProgressBar from './components/ProgressBar';
 
+interface PeopleProgress {
+  [key: string]: {
+    progress: number,
+    icon: string
+  }
+}
+
 export default function JhyunPage() {
   const MAX_PROGRESS = 11;
   const [progress, setProgress] = useState<number>(1);
 
-  const people = {
+  const people: PeopleProgress = {
     hoon: {
       progress: 1,
       icon: '🦀',
@@ -24,7 +31,7 @@ export default function JhyunPage() {
     },
   }
 
-  // TODO - setPeopleProgress로 다른 사람들의 게이지 API로 받아오기
+  // TODO - useEffect, setPeopleProgress로 나와 다른사람의 게이지 API로 받아오기
   const [peopleProgress, setPeopleProgress] = useState(people);
 
   const handleButtonClick = () => {

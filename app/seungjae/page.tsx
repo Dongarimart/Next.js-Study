@@ -5,11 +5,18 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import ProgressBar from './components/ProgressBar';
 
+interface PeopleProgress {
+  [key: string]: {
+    progress: number,
+    icon: string
+  }
+}
+
 export default function Seungjae() {
   const MAX_PROGRESS = 11;
   const [crap, SetCrap] = useState<number>(1);
 
-  const people = {
+  const people: PeopleProgress = {
     hoon: {
       progress: 1,
       icon: '🦀',
@@ -30,7 +37,7 @@ export default function Seungjae() {
     }
   }
 
-  // TODO - setPeopleProgress로 다른 사람들의 게이지 API로 받아오기
+  // TODO - useEffect, setPeopleProgress로 나와 다른사람의 게이지 API로 받아오기
   const [peopleProgress, setPeopleProgress] = useState(people);
 
   return (
@@ -39,7 +46,8 @@ export default function Seungjae() {
     <div className={styles.btn}>
       <button onClick={AddCrap}>양념게장도 먹고싶다</button>
       <div className={styles.progressBar}>
-        {'🦀 '.repeat(crap)}
+        {/* 승재야 나랑 이모티콘이 겹쳐서 이걸로 바꿨다.. 미안... ㅎㅎ */}
+        {'🖐️'.repeat(crap)}
       </div>
       <div className={styles.btn2}>
         <button onClick={() => SetCrap(1)}>Reset</button>

@@ -1,3 +1,4 @@
+import { randomInt } from 'crypto';
 import { promises } from 'dns';
 import fs from 'fs/promises';
 
@@ -14,19 +15,19 @@ interface ProgressPeople {
 
 const progressSample: ProgressPeople = {
   hoon: {
-    progress: 1,
+    progress: Math.ceil(Math.random() * 10),
     icon: "🦀"
   },
   jhyun: {
-    progress: 1,
+    progress: Math.ceil(Math.random() * 10),
     icon: "⛄"
   },
   seungjae: {
-    progress: 1,
+    progress: Math.ceil(Math.random() * 10),
     icon: "🖐️"
   },
   tae: {
-    progress: 1,
+    progress: Math.ceil(Math.random() * 10),
     icon: "🍕"
   }
 }
@@ -65,6 +66,8 @@ const getFile = async (): Promise<ProgressPeople> => {
  * @returns {Promise<Response>}
  */
 export async function GET(request: Request): Promise<Response>{
+  await initFile();
+
   try {
     const resBody = await getFile();
     return new Response(JSON.stringify(resBody), {
@@ -128,7 +131,10 @@ export async function POST(request: Request): Promise<Response> {
       })
     }
 
-    return new Response(JSON.stringify(newProgress), {
+    return new Response(JSON.stringify({
+      name,
+      progress,
+    }), {
       status: 201,
     });
   } catch (err) {
