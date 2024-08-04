@@ -41,9 +41,14 @@
 
 .progressBar {
   border: solid;
-  width: 50%;
+  width: 700px;
   padding: 1px;
   text-align: center;
   background-color: white;
   border-radius: 10px;
 }
+
+.progressBar_header {
+  text-align: left;
+}
+

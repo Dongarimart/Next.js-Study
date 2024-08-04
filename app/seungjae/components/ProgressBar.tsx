@@ -7,7 +7,7 @@ interface Props {
   count: number;
 }
 
-export default function ProgressBar({ name='사람', icon='😀', count=1 }: Props): JSX.Element {
+export default function ProgressBar({ name, icon='😀', count=1 }: Props): JSX.Element {
   return (
     <div
       style={{
@@ -16,10 +16,10 @@ export default function ProgressBar({ name='사람', icon='😀', count=1 }: Pro
         gap: '16px',
         fontSize: 'large',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
       }}
     >
-      <h2>{name}</h2>
+      <h2 className={styles.progressBar_header}>{name}</h2>
       <div className={styles.progressBar}>
         {icon.repeat(count)}
       </div>
