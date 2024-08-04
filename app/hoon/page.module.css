@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   margin: 0 auto;
   gap: 32px;
 }
@@ -15,6 +14,7 @@
   width: 680px;
   padding: 1px;
   background-color: white;
+  align-self: center;
 
   font-size: 32px;
   text-align: center;
@@ -23,9 +23,12 @@
 .buttonBar {
   display: flex;
   gap: 10px;
+  align-self: center;
 }
 
 .clickMe {
+  align-self: center;
+  
   font-size: 28px;
   background-color: #df2323;
   padding: 16px 32px;

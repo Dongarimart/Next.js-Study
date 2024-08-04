@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import styles from "./page.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProgressBar from './components/ProgressBar';
 
 interface PeopleProgress {
@@ -16,20 +16,60 @@ export default function Hoon() {
   const MAX_PROGRESS = 11;
   const [progress, setProgress] = useState<number>(1);
 
-  const progressUp = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const progressUp = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const prevProgress = progress;
     const nextProgress = progress + 1 < MAX_PROGRESS ? progress + 1 : progress;
     setProgress(nextProgress);
     console.log(nextProgress);
+
+    try {
+      const res = await fetch('/api/progress', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: 'hoon',
+          progress: nextProgress,
+        })
+      })
+
+      if (res.status == 201) {
+        console.log('게이지 서버 전송 성공');
+      } else {
+        console.log('게이지 서버 전송 실패');
+        setProgress(prevProgress);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
-  const reset = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const reset = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const prevProgress = progress;
     setProgress(1);
+
+    try {
+      const res = await fetch('/api/progress', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: 'hoon',
+          progress: 1,
+        })
+      })
+
+      if (res.status == 201) {
+        console.log('게이지 서버 전송 성공');
+      } else {
+        console.log('게이지 서버 전송 실패');
+        setProgress(prevProgress);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
   
   const people: PeopleProgress = {
-    hoon: {
+    jhyun: {
       progress: 1,
-      icon: '🦀',
+      icon: '☃️',
     },
     seungjae: {
       progress: 1,
@@ -43,6 +83,34 @@ export default function Hoon() {
 
   // TODO - useEffect, setPeopleProgress로 나와 다른사람의 게이지 API로 받아오기
   const [peopleProgress, setPeopleProgress] = useState(people);
+
+  useEffect(() => {
+    const initProgress = async () => {
+      try {
+        const res = await fetch('/api/progress');
+        const json: PeopleProgress = await res.json();
+        
+        Object.keys(json).forEach((name, index) => {
+          if (name === 'hoon') setProgress(json[name].progress);
+          else {
+            setPeopleProgress((prevState) => {
+              return { 
+                ...prevState, 
+                [name]: { 
+                  progress: json[name].progress,
+                  icon: prevState[name].icon,
+                }
+              }
+            })
+          }
+        })
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    initProgress();
+  }, [])
 
   return (
     <>
@@ -80,11 +148,16 @@ export default function Hoon() {
           // 반복되는 요소는 Component로 만들어 조립할 수 있다
           // ProgressBar Component 파일 위치: ./components/ProgressBar.tsx
           // ProgressBar 파일 편집해도 상관 없음.
-          <ProgressBar
-            name={'hoon'}
-            icon={peopleProgress.hoon.icon} 
-            count={peopleProgress.hoon.progress}
-          />
+          Object.keys(peopleProgress).map((name, index) => {
+            return (
+              <ProgressBar
+                name={name}
+                icon={peopleProgress[name].icon}
+                count={peopleProgress[name].progress}
+                key={index}
+              />
+            )
+          })
         }
       </div>
     </>
