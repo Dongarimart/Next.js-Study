@@ -5,7 +5,7 @@ interface Props {
   name: string;
   icon: string;
   count: number;
-}
+} // 변수들의 타입을 지정해준다. 
 
 export default function ProgressBar({ name='사람', icon='😀', count=1 }: Props): JSX.Element {
   return (
