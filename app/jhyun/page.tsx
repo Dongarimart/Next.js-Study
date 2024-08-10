@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './page.module.css';
 import Link from 'next/link';
 import ProgressBar from './components/ProgressBar';
@@ -31,17 +31,72 @@ export default function JhyunPage() {
     },
   }
 
-  // TODO - useEffect, setPeopleProgress로 나와 다른사람의 게이지 API로 받아오기
-  const [peopleProgress, setPeopleProgress] = useState(people);
+  const [peopleProgress, setPeopleProgress] = useState<PeopleProgress>(people);
 
-  const handleButtonClick = () => {
-    setProgress(prevProgress => Math.min(prevProgress +1, MAX_PROGRESS))
-    console.log('Progress:', progress + 1); 
+  useEffect(() => {
+    const fetchPeopleProgress = async () => {
+      try {
+        const response = await fetch('/api/progress');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data: PeopleProgress = await response.json();
+        setPeopleProgress(data);
+      } catch (error) {
+        console.error('Failed to fetch progress data:', error);
+      }
+    };
+    fetchPeopleProgress();
+  }, []);
+
+  const handleButtonClick = async () => {
+    setProgress(prevProgress => Math.min(prevProgress + 1, MAX_PROGRESS));
+    console.log('Progress:', progress + 1);
+
+    try {
+      const response = await fetch('/api/progress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: "jhyun",
+          progress: progress + 1,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const json = await response.json();
+      console.log('Progress updated:', json);
+    } catch (error) {
+      console.error('Failed to update progress:', error);
+    }
   };
 
-  const handleResetClick = () => {
+  const handleResetClick = async () => {
     setProgress(1);
-    console.log('Progress reset to 1'); 
+    console.log('Progress reset to 1');
+
+    try {
+      const response = await fetch('/api/progress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: "jhyun",
+          progress: 1,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const json = await response.json();
+      console.log('Progress reset:', json);
+    } catch (error) {
+      console.error('Failed to reset progress:', error);
+    }
   };
 
   return (
@@ -67,19 +122,22 @@ export default function JhyunPage() {
       {/* 다른 사람들 게이지 */}
       {/* TODO - 다른 3명의 게이지 UI/UX 완성하기 */}
       <div className={styles.container}>
-        {
-          // 반복되는 요소는 Component로 만들어 조립할 수 있다
-          // ProgressBar Component 파일 위치: ./components/ProgressBar.tsx
-          // ProgressBar 파일 편집해도 상관 없음.
-          <ProgressBar
-            name={'hoon'}
-            icon={peopleProgress.hoon.icon} 
-            count={peopleProgress.hoon.progress}
-          />
-        }
+        <ProgressBar
+          name={'hoon'}
+          icon={peopleProgress.hoon.icon} 
+          count={peopleProgress.hoon.progress}
+        />
+        <ProgressBar
+          name={'seungjae'}
+          icon={peopleProgress.seungjae.icon} 
+          count={peopleProgress.seungjae.progress}
+        />
+        <ProgressBar
+          name={'tae'}
+          icon={peopleProgress.tae.icon} 
+          count={peopleProgress.tae.progress}
+        />
       </div>
     </>
   );
-};
-
-
+}
